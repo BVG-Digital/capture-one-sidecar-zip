@@ -17,3 +17,7 @@ cp Resources/Info.plist "$APP/Contents/Info.plist"
 codesign --force --sign - "$APP"
 
 echo "Built $APP"
+
+# Release asset. Keep this name stable so releases/latest/download/Sidecar-Zip.zip always works.
+ditto -c -k --keepParent "$APP" build/Sidecar-Zip.zip
+echo "Packed build/Sidecar-Zip.zip"
